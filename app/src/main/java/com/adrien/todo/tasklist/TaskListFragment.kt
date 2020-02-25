@@ -31,9 +31,16 @@ class TaskListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recycleerViewExemple.layoutManager = LinearLayoutManager(activity)
         recycleerViewExemple.adapter = TaskListAdapter(taskList)
+        var adapter: TaskListAdapter = recycleerViewExemple.adapter as TaskListAdapter
+
         floatingActionButton.setOnClickListener {
             taskList.add(Task(id = UUID.randomUUID().toString(), title = "Task ${taskList.size + 1}"))
-            (recycleerViewExemple.adapter as TaskListAdapter).notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
+        }
+
+        adapter.onDeleteClickListener = { task ->
+            taskList.remove(task)
+            adapter.notifyDataSetChanged();
         }
     }
 }
