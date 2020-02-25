@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">toDoAdrienIIM</string>
+    <string name="description">Description</string>
+    <string name="delete_button">DeleteButton</string>
 </resources>
